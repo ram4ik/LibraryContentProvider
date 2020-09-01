@@ -9,19 +9,26 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        StarView(numberOfStars: 5)
     }
 }
 
 struct StarView: View {
+    var numberOfStars = 5
+    
     var body: some View {
         HStack {
-            ForEach(0..<5) { value in
-                Image(systemName: "start")
+            ForEach(0..<numberOfStars) { value in
+                Image(systemName: "star")
                     .font(.largeTitle)
             }
         }
+    }
+}
+
+struct LibraryViewContent: LibraryContentProvider {
+    var views: [LibraryItem] {
+        [LibraryItem(StarView(numberOfStars: 5))]
     }
 }
 
